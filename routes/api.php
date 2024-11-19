@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\OrganizationController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,3 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // User
 
 Route::post('/users/{id}', [UserController::class, 'update']);
+
+
+
+Route::get('/category', [CategoryController::class, 'index']);
+Route::get('/organization', [OrganizationController::class, 'index']);

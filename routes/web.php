@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Artisan;
 use Symfony\Component\HttpFoundation\Request;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Admin\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,6 +85,9 @@ Route::namespace('App\Http\Controllers')->group(
 
             Route::resource('/users', 'UserController');
             Route::get('/block', 'UserController@block')->name('block');
+
+            Route::resource('/categorys', 'CategoryController');
+            Route::resource('/organization', 'OrganizationController');
         });
     }
 );
