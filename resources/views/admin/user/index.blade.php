@@ -24,9 +24,9 @@
                                         <th>Image</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Country</th>
+                                        <th>Address</th>
                                         <th>City</th>
-                                        <th>Join date</th>
+                                        <th>NID</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>

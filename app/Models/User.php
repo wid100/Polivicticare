@@ -31,6 +31,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'country_code',
         'gender',
         'password',
+
+        'uid',
     ];
     public function subscriptions()
     {
@@ -63,10 +65,5 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendEmailVerificationNotification()
     {
         $this->notify(new CustomVerifyEmail);
-    }
-
-    public function schedules()
-    {
-        return $this->hasMany(Schedule::class);
     }
 }
