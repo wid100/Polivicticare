@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class FoundRequestController extends Controller
 {
+    public function index()
+    {
+        // Fetch FoundRequest records with status == 1 one is active
+        $fondRequests = FoundRequest::where('status', 1)->with('category')->get();
+        return response()->json($fondRequests);
+    }
 
     public function store(Request $request, $id)
     {

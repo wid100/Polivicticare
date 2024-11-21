@@ -36,3 +36,4 @@ Route::get('/organization', [OrganizationController::class, 'index']);
 // FoundRequest
 Route::post('/found-request/{id}', [FoundRequestController::class, 'store']);
 Route::get('/found-category', [ApiController::class, 'index']);
+Route::get('/fonds', [FoundRequestController::class, 'index']);
