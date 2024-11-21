@@ -34,24 +34,24 @@ class ProfileController extends Controller
                 'roll' => 'required',
                 'name' => 'required|max:255',
                 'nid' => 'required',
-                'description' => 'required',
+                'description' => 'nullable',
                 'reference' => 'required',
                 'party_designation' => 'required',
                 'location' => 'required',
-                'category' => 'required',
-                'organization' => 'required',
+                'category' => 'nullable',
+                'organization' => 'nullable',
                 'bkash_number' => 'required',
             ]);
         } elseif ($request->roll == 'donor') {
             $request->validate([
                 'roll' => 'required',
                 'status' => 'required',
-                'name' => 'required|max:255',
-                'nid' => 'required',
-                'party_designation' => 'required',
-                'location' => 'required',
-                'category' => 'required',
-                'organization' => 'required',
+                'name' => 'nullable|max:255',
+                'nid' => 'nullable',
+                'party_designation' => 'nullable',
+                'location' => 'nullable',
+                'category' => 'nullable',
+                'organization' => 'nullable',
             ]);
         }
 
