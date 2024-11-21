@@ -88,6 +88,7 @@ Route::namespace('App\Http\Controllers')->group(
 
             Route::resource('/categorys', 'CategoryController');
             Route::resource('/organization', 'OrganizationController');
+            Route::resource('/foundcategory', 'FoundCategoryController');
         });
     }
 );

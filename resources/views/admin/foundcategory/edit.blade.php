@@ -4,8 +4,8 @@
     <div class="page-content">
         <nav class="page-breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Category</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Edit Category</li>
+                <li class="breadcrumb-item"><a href="#">Found Category</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Found Category</li>
             </ol>
         </nav>
 
@@ -14,8 +14,8 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h6 class="card-title">Edit Category</h6>
-                        <form action="{{ route('admin.categorys.update', $category->id) }}" method="POST"
+                        <h6 class="card-title">Edit Found Category</h6>
+                        <form action="{{ route('admin.foundcategory.update', $foundcategory->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -27,7 +27,7 @@
                                                 class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="name" name="name"
                                             autocomplete="off" placeholder="Enter Category Name"
-                                            value="{{ old('name', $category->name) }}">
+                                            value="{{ old('name', $foundcategory->name) }}">
                                     </div>
                                 </div>
 
@@ -36,7 +36,7 @@
                                         <!-- Hidden input to handle unchecked state -->
                                         <input type="hidden" name="status">
                                         <input type="checkbox" class="form-check-input" name="status" id="status"
-                                            {{ old('status', $category->status) ? 'checked' : '' }}>
+                                            {{ old('status', $foundcategory->status) ? 'checked' : '' }}>
                                         <label class="form-check-label" for="status">Active</label>
                                     </div>
                                 </div>

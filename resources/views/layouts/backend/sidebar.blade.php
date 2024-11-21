@@ -40,6 +40,13 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a href="{{ route('admin.foundcategory.index') }}" class="nav-link">
+                    <i class="link-icon" data-feather="box"></i>
+                    <span class="link-title">Found Category</span>
+                </a>
+            </li>
+
         </ul>
     </div>
 </nav>

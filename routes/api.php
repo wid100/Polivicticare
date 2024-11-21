@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\FoundRequestController;
 use App\Http\Controllers\Api\OrganizationController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\ApiController;
+use App\Models\FoundRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,3 +31,7 @@ Route::post('/users/{id}', [UserController::class, 'update']);
 
 Route::get('/category', [CategoryController::class, 'index']);
 Route::get('/organization', [OrganizationController::class, 'index']);
+
+// FoundRequest
+Route::post('/found-request/{id}', [FoundRequestController::class, 'store']);
+Route::get('/found-category', [ApiController::class, 'index']);
