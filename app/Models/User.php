@@ -33,6 +33,17 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
 
         'uid',
+
+        'role_id',
+        'nid',
+        'reference',
+        'problem_description',
+        'party_designation',
+        'location',
+        'category',
+        'organization',
+        'bank_info',
+        'status'
     ];
     public function subscriptions()
     {

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\FoundRequestController;
 use App\Http\Controllers\Api\OrganizationController;
+use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ApiController;
 use App\Models\FoundRequest;
@@ -26,7 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // User
 
 Route::post('/users/{id}', [UserController::class, 'update']);
-
+Route::post('/create-profile/{id}', [ProfileController::class, 'create']);
 
 
 Route::get('/category', [CategoryController::class, 'index']);

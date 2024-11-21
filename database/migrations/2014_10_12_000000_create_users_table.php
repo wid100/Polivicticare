@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('nid')->nullable();
             $table->text('problem_description')->nullable();
             $table->string('reference')->nullable();
+            $table->string('organization')->nullable();
             $table->string('party_designation')->nullable();
             $table->string('location')->nullable();
             $table->string('status')->nullable();
