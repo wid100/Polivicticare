@@ -24,4 +24,15 @@ class FoundRequest extends Model
     protected $casts = [
         'image' => 'array',
     ];
+
+    public function foundCategory()
+    {
+        return $this->belongsTo(FoundCategory::class, 'category');
+    }
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
