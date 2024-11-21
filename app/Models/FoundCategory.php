@@ -9,4 +9,10 @@ class FoundCategory extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'status'];
+
+
+    public function foundRequests()
+    {
+        return $this->hasMany(FoundRequest::class, 'category');
+    }
 }
