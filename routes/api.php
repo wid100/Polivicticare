@@ -21,10 +21,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return response()->json($request->user());
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return response()->json($request->user());
+// });
 // User
+
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    $user = $request->user()->load(['category', 'organization']);
+    return response()->json($user);
+});
+
 
 Route::post('/users/{id}', [UserController::class, 'update']);
 Route::post('/create-profile/{id}', [ProfileController::class, 'create']);

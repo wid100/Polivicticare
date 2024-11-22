@@ -35,11 +35,11 @@ class ProfileController extends Controller
                 'name' => 'required|max:255',
                 'nid' => 'required',
                 'description' => 'nullable',
-                'reference' => 'required',
+                'reference_name' => 'required',
                 'party_designation' => 'required',
                 'location' => 'required',
-                'category' => 'nullable',
-                'organization' => 'nullable',
+                'category_id' => 'nullable',
+                'organization_id' => 'nullable',
                 'bkash_number' => 'required',
             ]);
         } elseif ($request->roll == 'donor') {
@@ -50,8 +50,8 @@ class ProfileController extends Controller
                 'nid' => 'nullable',
                 'party_designation' => 'nullable',
                 'location' => 'nullable',
-                'category' => 'nullable',
-                'organization' => 'nullable',
+                'category_id' => 'nullable',
+                'organization_id' => 'nullable',
             ]);
         }
 
@@ -61,11 +61,11 @@ class ProfileController extends Controller
                 'role_id' => 2,
                 'nid' => $request->nid,
                 'problem_description' => $request->description,
-                'reference' => $request->reference,
+                'reference_name' => $request->reference_name,
                 'party_designation' => $request->party_designation,
                 'location' => $request->location,
-                'category' => $request->category,
-                'organization' => $request->organization,
+                'category_id' => $request->category_id,
+                'organization_id' => $request->organization_id,
                 'bank_info' => $request->bkash_number,
             ];
         } elseif ($request->roll == 'donor') {
@@ -75,8 +75,8 @@ class ProfileController extends Controller
                 'nid' => $request->nid,
                 'party_designation' => $request->party_designation,
                 'location' => $request->location,
-                'category' => $request->category,
-                'organization' => $request->organization,
+                'category_id' => $request->category_id,
+                'organization_id' => $request->organization_id,
                 'status' => $request->status, // 1 = with name
             ];
         }
@@ -93,9 +93,11 @@ class ProfileController extends Controller
             }
 
             $file->move($destinationPath, $fileName);
-            $data['image'] = json_encode('image/user' . '/' . $fileName);
+            $data['image'] = 'image/user/' . $fileName;
         }
+
         $user->update($data);
+
 
 
         return response()->json([

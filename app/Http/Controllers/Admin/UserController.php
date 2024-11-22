@@ -13,12 +13,18 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class UserController extends Controller
 {
+
+
+
+
     public function index()
     {
-        $users = User::where('role_id', 2)->get();
-
+        $users = User::where('role_id', 2)->with('category')->get();
         return view('admin.user.index', compact('users'));
     }
+
+
+
 
     public function block()
     {
@@ -51,7 +57,7 @@ class UserController extends Controller
             'address' => 'nullable',
             'phone' => 'nullable',
             'country_code' => 'nullable',
-            
+
         ]);
 
         $data = [
