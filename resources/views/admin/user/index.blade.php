@@ -24,8 +24,8 @@
                                         <th>Image</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Address</th>
-                                        <th>City</th>
+                                        <th>Phone</th>
+                                        <th>Category</th>
                                         <th>NID</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -44,9 +44,12 @@
                                             </td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
-                                            <td>{{ $user->country }}</td>
-                                            <td>{{ $user->city }}</td>
-                                            <td>{{ $user->created_at }}</td>
+                                            <td>{{ $user->phone }}</td>
+                                            <td>{{ $user->category->name }}</td>
+                                            <td>
+                                                {{ $user->nid }}
+                                            </td>
+
                                             <td>
                                                 @if ($user->email_verified_at)
                                                     <span class="badge bg-success">Verified</span>
