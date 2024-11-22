@@ -57,4 +57,27 @@ class FoundRequestController extends Controller
             'data' => $foundRequest,
         ], 201);
     }
+
+
+    public function getmyfund($id)
+    {
+        try {
+            // Fetch fund requests for the specified user ID, including the related 'foundCategory' and 'user'
+            $fundRequests = FoundRequest::where('user_id', $id)
+                ->with(['category', 'user'])
+                ->get();
+
+            // Return the response with the fetched data
+            return response()->json([
+                'success' => true,
+                'data' => $fundRequests,
+            ]);
+        } catch (\Exception $e) {
+            // Handle any exceptions and return an error response
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage(),
+            ], 500);
+        }
+    }
 }
