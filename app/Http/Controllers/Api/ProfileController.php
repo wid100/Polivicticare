@@ -29,9 +29,11 @@ class ProfileController extends Controller
     public function create(Request $request, $id)
     {
         $user =  User::find($id);
+        $request->validate([
+            'roll' => 'required|in:victim,donor',
+        ]);
         if ($request->roll == 'victim') {
             $request->validate([
-                'roll' => 'required',
                 'name' => 'required|max:255',
                 'nid' => 'required',
                 'description' => 'nullable',
@@ -44,7 +46,6 @@ class ProfileController extends Controller
             ]);
         } elseif ($request->roll == 'donor') {
             $request->validate([
-                'roll' => 'required',
                 'status' => 'required',
                 'name' => 'nullable|max:255',
                 'nid' => 'nullable',
@@ -55,30 +56,54 @@ class ProfileController extends Controller
             ]);
         }
 
-        if ($request->roll == 'victim') {
-            $data = [
-                'name' => $request->name,
+        // if ($request->roll == 'victim') {
+        //     $data = [
+        //         'name' => $request->name,
+        //         'role_id' => 2,
+        //         'nid' => $request->nid,
+        //         'problem_description' => $request->description,
+        //         'reference' => $request->reference,
+        //         'party_designation' => $request->party_designation,
+        //         'location' => $request->location,
+        //         'category' => $request->category,
+        //         'organization' => $request->organization,
+        //         'bank_info' => $request->bkash_number,
+        //     ];
+        // } elseif ($request->roll == 'donor') {
+        //     $data = [
+        //         'name' => $request->name,
+        //         'role_id' => 1,
+        //         'nid' => $request->nid,
+        //         'party_designation' => $request->party_designation,
+        //         'location' => $request->location,
+        //         'category' => $request->category,
+        //         'organization' => $request->organization,
+        //         'status' => $request->status, // 1 = with name
+        //     ];
+        // }
+
+        $data = [
+            'name' => $request->name,
+            'nid' => $request->nid,
+            'party_designation' => $request->party_designation,
+            'location' => $request->location,
+            'category' => $request->category,
+            'organization' => $request->organization,
+        ];
+
+        // Role-specific fields
+        if ($request->roll === 'victim') {
+            $data = array_merge($data, [
                 'role_id' => 2,
-                'nid' => $request->nid,
                 'problem_description' => $request->description,
                 'reference' => $request->reference,
-                'party_designation' => $request->party_designation,
-                'location' => $request->location,
-                'category' => $request->category,
-                'organization' => $request->organization,
                 'bank_info' => $request->bkash_number,
-            ];
-        } elseif ($request->roll == 'donor') {
-            $data = [
-                'name' => $request->name,
+            ]);
+        } elseif ($request->roll === 'donor') {
+            $data = array_merge($data, [
                 'role_id' => 1,
-                'nid' => $request->nid,
-                'party_designation' => $request->party_designation,
-                'location' => $request->location,
-                'category' => $request->category,
-                'organization' => $request->organization,
                 'status' => $request->status, // 1 = with name
-            ];
+            ]);
         }
 
 
@@ -100,7 +125,7 @@ class ProfileController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'User created successfully',
+            'message' => 'Profile Update successfully',
             'data' => $data,
         ]);
     }
