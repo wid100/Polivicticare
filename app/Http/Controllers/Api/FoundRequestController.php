@@ -57,4 +57,15 @@ class FoundRequestController extends Controller
             'data' => $foundRequest,
         ], 201);
     }
+
+    public function show($id)
+    {
+        $foundRequest = FoundRequest::where('id', $id)
+            ->where('status', 1)
+            ->with(['category', 'user' => function ($query) {
+                $query->select('id', 'name');
+            }])
+            ->first();
+        return response()->json($foundRequest, 200);
+    }
 }
