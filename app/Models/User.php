@@ -40,8 +40,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'problem_description',
         'party_designation',
         'location',
-        'category',
-        'organization',
+        'category_id',
+        'organization_id',
         'bank_info',
         'status'
     ];
