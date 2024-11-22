@@ -37,11 +37,11 @@ class ProfileController extends Controller
                 'name' => 'required|max:255',
                 'nid' => 'required',
                 'description' => 'nullable',
-                'reference_name' => 'required',
+                'reference' => 'required',
                 'party_designation' => 'required',
                 'location' => 'required',
-                'category_id' => 'nullable',
-                'organization_id' => 'nullable',
+                'category' => 'nullable',
+                'organization' => 'nullable',
                 'bkash_number' => 'required',
             ]);
         } elseif ($request->roll == 'donor') {
@@ -51,8 +51,8 @@ class ProfileController extends Controller
                 'nid' => 'nullable',
                 'party_designation' => 'nullable',
                 'location' => 'nullable',
-                'category_id' => 'nullable',
-                'organization_id' => 'nullable',
+                'category' => 'nullable',
+                'organization' => 'nullable',
             ]);
         }
 
@@ -87,8 +87,8 @@ class ProfileController extends Controller
             'nid' => $request->nid,
             'party_designation' => $request->party_designation,
             'location' => $request->location,
-            'category' => $request->category,
-            'organization' => $request->organization,
+            'category_id' => $request->category,
+            'organization_id' => $request->organization,
         ];
 
         // Role-specific fields
@@ -96,11 +96,9 @@ class ProfileController extends Controller
             $data = array_merge($data, [
                 'role_id' => 2,
                 'problem_description' => $request->description,
-                'reference_name' => $request->reference_name,
+                'reference_name' => $request->reference,
                 'party_designation' => $request->party_designation,
                 'location' => $request->location,
-                'category_id' => $request->category_id,
-                'organization_id' => $request->organization_id,
                 'bank_info' => $request->bkash_number,
             ]);
         } elseif ($request->roll === 'donor') {
@@ -109,8 +107,6 @@ class ProfileController extends Controller
                 'nid' => $request->nid,
                 'party_designation' => $request->party_designation,
                 'location' => $request->location,
-                'category_id' => $request->category_id,
-                'organization_id' => $request->organization_id,
                 'status' => $request->status, // 1 = with name
             ]);
         }
