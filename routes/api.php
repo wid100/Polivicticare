@@ -47,3 +47,5 @@ Route::get('/fonds', [FoundRequestController::class, 'index']);
 
 
 Route::get('/get/myfund/{id}', [FoundRequestController::class, 'getmyfund']);
+// get single fond
+Route::get('/fonds/{id}', [FoundRequestController::class, 'show']);
