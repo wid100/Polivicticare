@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Api\GalleryController;
+use App\Http\Controllers\Api\GeoLocationController;
 use App\Models\FoundRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -51,3 +52,9 @@ Route::get('/get/myfund/{id}', [FoundRequestController::class, 'getmyfund']);
 // get single fond
 Route::get('/fonds/{id}', [FoundRequestController::class, 'show']);
 Route::get('/gallery/{id}', [GalleryController::class, 'index']);
+
+// geo location
+Route::get('/division', [GeoLocationController::class, 'division']);
+Route::get('/district/{id}', [GeoLocationController::class, 'district']); //id = division id
+Route::get('/thanas/{id}', [GeoLocationController::class, 'thana']); //id = district id
+Route::get('/unions/{id}', [GeoLocationController::class, 'unions']); //id = thana id
