@@ -46,7 +46,6 @@ class ProfileController extends Controller
             ]);
         } elseif ($request->roll == 'donor') {
             $request->validate([
-                'status' => 'required',
                 'name' => 'nullable|max:255',
                 'nid' => 'nullable',
                 'party_designation' => 'nullable',
@@ -107,7 +106,6 @@ class ProfileController extends Controller
                 'nid' => $request->nid,
                 'party_designation' => $request->party_designation,
                 'location' => $request->location,
-                'status' => $request->status, // 1 = with name
             ]);
         }
 

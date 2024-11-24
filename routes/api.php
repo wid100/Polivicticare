@@ -45,6 +45,9 @@ Route::get('/organization', [OrganizationController::class, 'index']);
 Route::post('/found-request/{id}', [FoundRequestController::class, 'store']);
 Route::get('/found-category', [ApiController::class, 'index']);
 Route::get('/fonds', [FoundRequestController::class, 'index']);
+
+
+Route::get('/get/myfund/{id}', [FoundRequestController::class, 'getmyfund']);
 // get single fond
 Route::get('/fonds/{id}', [FoundRequestController::class, 'show']);
 Route::get('/gallery/{id}', [GalleryController::class, 'index']);
