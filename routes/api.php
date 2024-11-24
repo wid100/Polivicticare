@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\OrganizationController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ApiController;
+use App\Http\Controllers\Api\GalleryController;
 use App\Models\FoundRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -46,3 +47,4 @@ Route::get('/found-category', [ApiController::class, 'index']);
 Route::get('/fonds', [FoundRequestController::class, 'index']);
 // get single fond
 Route::get('/fonds/{id}', [FoundRequestController::class, 'show']);
+Route::get('/gallery/{id}', [GalleryController::class, 'index']);
