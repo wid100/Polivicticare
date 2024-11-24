@@ -54,6 +54,13 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a href="{{ route('admin.pourashava.index') }}" class="nav-link">
+                    <i class="link-icon" data-feather="box"></i>
+                    <span class="link-title">Pourashavas</span>
+                </a>
+            </li>
+
         </ul>
     </div>
 </nav>

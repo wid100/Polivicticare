@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PourashavaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,6 +91,7 @@ Route::namespace('App\Http\Controllers')->group(
             Route::resource('/organization', 'OrganizationController');
             Route::resource('/foundcategory', 'FoundCategoryController');
             Route::resource('/foundrequest', 'FoundRequestController');
+            Route::resource('/pourashava', 'PourashavaController');
         });
     }
 );

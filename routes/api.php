@@ -58,3 +58,4 @@ Route::get('/division', [GeoLocationController::class, 'division']);
 Route::get('/district/{id}', [GeoLocationController::class, 'district']); //id = division id
 Route::get('/thanas/{id}', [GeoLocationController::class, 'thana']); //id = district id
 Route::get('/unions/{id}', [GeoLocationController::class, 'unions']); //id = thana id
+Route::get('/pourashava/{id}', [GeoLocationController::class, 'pourashava']); // id = thana id

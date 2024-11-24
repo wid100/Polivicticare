@@ -30,4 +30,9 @@ class GeoLocationController extends Controller
         $thana = Thana::find($id);
         return response()->json($thana->unions);
     }
+    public function pourashava($id) // get thana id
+    {
+        $thana = Thana::find($id);
+        return response()->json($thana->pourashava);
+    }
 }

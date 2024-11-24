@@ -1,0 +1,100 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use App\Models\Admin\Pourashava;
+use App\Thana;
+use Illuminate\Http\Request;
+
+class PourashavaController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $pourashavas = Pourashava::with('thana')->get();
+        return view('admin.pourashava.index', compact('pourashavas'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $thanas = Thana::all();
+        // dd($thanas);
+        return view('admin.pourashava.create', compact('thanas'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'thana' => 'required',
+        ]);
+
+        Pourashava::create([
+            'name' => $request->name,
+            'thana_id' => $request->thana,
+        ]);
+        return redirect()->route('admin.pourashava.index')->with('success', 'Pourashava created successfully.');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Admin\Pourashava  $pourashava
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Pourashava $pourashava)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Admin\Pourashava  $pourashava
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Pourashava $pourashava)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Admin\Pourashava  $pourashava
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Pourashava $pourashava)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Admin\Pourashava  $pourashava
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Pourashava $pourashava)
+    {
+        $pourashava->delete();
+        return redirect()->route('admin.pourashava.index')->with('success', 'Pourashava deleted successfully!');
+    }
+}
