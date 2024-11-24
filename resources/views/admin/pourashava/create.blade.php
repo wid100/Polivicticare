@@ -38,7 +38,7 @@
                                         <label for="name" class="form-label">Pourashava Name <span
                                                 class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="name" name="name"
-                                            autocomplete="off" placeholder="Enter Category Name">
+                                            autocomplete="off" placeholder="Enter Pourashava Name">
                                     </div>
                                 </div>
 

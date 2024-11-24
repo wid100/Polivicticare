@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PourashavaController;
+use App\Http\Controllers\Admin\WardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,6 +93,7 @@ Route::namespace('App\Http\Controllers')->group(
             Route::resource('/foundcategory', 'FoundCategoryController');
             Route::resource('/foundrequest', 'FoundRequestController');
             Route::resource('/pourashava', 'PourashavaController');
+            Route::resource('/ward', 'WardController');
         });
     }
 );

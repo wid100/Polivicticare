@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\District;
 use App\Division;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Ward;
 use App\Thana;
 use Illuminate\Http\Request;
 
@@ -34,5 +35,10 @@ class GeoLocationController extends Controller
     {
         $thana = Thana::find($id);
         return response()->json($thana->pourashava);
+    }
+    public function ward()
+    {
+        $word = Ward::all();
+        return response()->json($word);
     }
 }
