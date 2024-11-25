@@ -43,6 +43,7 @@ class ProfileController extends Controller
                 'category' => 'nullable',
                 'organization' => 'nullable',
                 'bkash_number' => 'required',
+
             ]);
         } elseif ($request->roll == 'donor') {
             $request->validate([
