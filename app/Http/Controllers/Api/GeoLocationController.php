@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\District;
 use App\Division;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Upazilla;
 use App\Models\Admin\Ward;
 use App\Thana;
 use Illuminate\Http\Request;
@@ -78,5 +79,10 @@ class GeoLocationController extends Controller
     {
         $word = Ward::all();
         return response()->json($word);
+    }
+    public function upazilla($id) //  id = upazilla_id
+    {
+        $upazillas = Upazilla::where('district_id', $id)->get();
+        return response()->json($upazillas);
     }
 }
