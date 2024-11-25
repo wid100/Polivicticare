@@ -18,24 +18,62 @@ class GeoLocationController extends Controller
     }
     public function district($id)
     {
-        $division = Division::find($id);
-        return response()->json($division->districts);
+        $districts = District::where('division_id', $id)->get();
+        return response()->json([
+            'success' => true,
+            'data' => $districts,
+        ]);
     }
     public function thana($id)
     {
-        $district = District::find($id);
-        return response()->json($district->thanas);
+        $thanas = District::find($id)?->thanas;
+
+        if ($thanas) {
+            return response()->json([
+                'success' => true,
+                'data' => $thanas,
+            ]);
+        }
+        return response()->json([
+            'success' => false,
+            'message' => 'No thanas found for the given district ID.',
+        ], 404);
     }
-    public function unions($id) // get thana id
+
+    public function unions($id) // Get thana ID
     {
         $thana = Thana::find($id);
-        return response()->json($thana->unions);
+
+        if (!$thana) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Thana not found.',
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $thana->unions,
+        ]);
     }
-    public function pourashava($id) // get thana id
+
+    public function pourashava($id) // Get thana ID
     {
         $thana = Thana::find($id);
-        return response()->json($thana->pourashava);
+
+        if (!$thana) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Thana not found.',
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $thana->pourashava,
+        ]);
     }
+
     public function ward()
     {
         $word = Ward::all();
