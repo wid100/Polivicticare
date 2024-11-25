@@ -60,3 +60,4 @@ Route::get('/thanas/{id}', [GeoLocationController::class, 'thana']); //id = dist
 Route::get('/unions/{id}', [GeoLocationController::class, 'unions']); //id = thana id
 Route::get('/pourashava/{id}', [GeoLocationController::class, 'pourashava']); // id = thana id
 Route::get('/wards', [GeoLocationController::class, 'ward']); // return all wards list
+Route::get('/upazillas/{id}', [GeoLocationController::class, 'upazilla']); // id = district id
