@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Api\GalleryController;
 use App\Http\Controllers\Api\GeoLocationController;
+use App\Http\Controllers\Auth\GoogleController;
 use App\Models\FoundRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -61,3 +62,8 @@ Route::get('/unions/{id}', [GeoLocationController::class, 'unions']); //id = tha
 Route::get('/pourashava/{id}', [GeoLocationController::class, 'pourashava']); // id = thana id
 Route::get('/wards', [GeoLocationController::class, 'ward']); // return all wards list
 Route::get('/upazillas/{id}', [GeoLocationController::class, 'upazilla']); // id = district id
+
+
+// social auth api
+Route::get('/auth/google/redirect', [GoogleController::class, 'redirectToGoogle']);
+Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);

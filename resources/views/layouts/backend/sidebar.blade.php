@@ -53,6 +53,13 @@
                     <span class="link-title">All Found Request</span>
                 </a>
             </li>
+            
+            <li class="nav-item">
+                <a href="{{ route('admin.upazilla.index') }}" class="nav-link">
+                    <i class="link-icon" data-feather="box"></i>
+                    <span class="link-title">Upazillas</span>
+                </a>
+            </li>
 
             <li class="nav-item">
                 <a href="{{ route('admin.pourashava.index') }}" class="nav-link">
@@ -67,12 +74,7 @@
                     <span class="link-title">Ward</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{ route('admin.upazilla.index') }}" class="nav-link">
-                    <i class="link-icon" data-feather="box"></i>
-                    <span class="link-title">Upazillas</span>
-                </a>
-            </li>
+
 
         </ul>
     </div>
