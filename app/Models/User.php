@@ -51,7 +51,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
         'role_id',
         // 'nid',
-        'reference_name',
         'problem_description',
         'party_designation',
         'location',
@@ -59,8 +58,12 @@ class User extends Authenticatable implements MustVerifyEmail
         'organization_id',
         'bank_info',
         'status',
-        'reference_name'
-
+        'reference_name',
+        'reference_phone',
+        'reference_email',
+        'reference_organization_id',
+        'reference_district',
+        'reference_location',
     ];
 
 

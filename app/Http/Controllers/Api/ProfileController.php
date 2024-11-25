@@ -37,12 +37,24 @@ class ProfileController extends Controller
                 'name' => 'required|max:255',
                 'nid' => 'nullable',
                 'description' => 'nullable',
-                'reference' => 'required',
                 'party_designation' => 'required',
                 'location' => 'required',
                 'category' => 'nullable',
                 'organization' => 'nullable',
                 'bkash_number' => 'required',
+                'division_id' => 'required',
+                'district_id' => 'required',
+                'thana_id' => 'required',
+                'union_id' => 'required',
+                'pourashava_id' => 'required',
+                'ward_id' => 'required',
+                'house' => 'required',
+                'reference_name' => 'required',
+                'reference_email' => 'required',
+                'reference_phone' => 'required',
+                'reference_organization_id' => 'nullable',
+                'reference_district' => 'nullable',
+                'reference_location' => 'nullable',
 
             ]);
         } elseif ($request->roll == 'donor') {
@@ -100,6 +112,21 @@ class ProfileController extends Controller
                 'party_designation' => $request->party_designation,
                 'location' => $request->location,
                 'bank_info' => $request->bkash_number,
+                'division_id' => $request->division_id,
+                'district_id' => $request->district_id,
+                'thana_id' => $request->thana_id,
+                'union_id' => $request->union_id,
+                'pourashava_id' => $request->pourashava_id,
+                'ward_id' => $request->ward_id,
+                'house' => $request->house,
+                'reference_name' => $request->reference_name,
+                'reference_phone' => $request->reference_phone,
+                'reference_email' => $request->reference_email,
+                'reference_organization_id' => $request->reference_organization_id,
+                'reference_district' => $request->reference_district,
+                'reference_location' => $request->reference_location,
+
+
             ]);
         } elseif ($request->roll === 'donor') {
             $data = array_merge($data, [
