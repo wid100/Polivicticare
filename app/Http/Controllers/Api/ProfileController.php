@@ -35,7 +35,7 @@ class ProfileController extends Controller
         if ($request->roll == 'victim') {
             $request->validate([
                 'name' => 'required|max:255',
-                'nid' => 'required',
+                'nid' => 'nullable',
                 'description' => 'nullable',
                 'reference' => 'required',
                 'party_designation' => 'required',
