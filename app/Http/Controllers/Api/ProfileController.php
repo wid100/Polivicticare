@@ -49,6 +49,7 @@ class ProfileController extends Controller
                 'ward_id' => 'required',
                 'house' => 'required',
                 'reference_name' => 'required',
+                'location' => 'required',
                 'reference_email' => 'required',
                 'reference_phone' => 'required',
                 'reference_organization_id' => 'nullable',
