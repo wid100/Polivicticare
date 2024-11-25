@@ -16,6 +16,14 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('role_id')->default(2);
+            $table->unsignedBigInteger('division_id')->nullable();
+            $table->unsignedBigInteger('district_id')->nullable();
+            $table->unsignedBigInteger('thana_id')->nullable();
+            $table->unsignedBigInteger('union_id')->nullable();
+            $table->unsignedBigInteger('pourashava_id')->nullable();
+            $table->unsignedBigInteger('ward_id')->nullable();
+            $table->string('house')->nullable();
+
             $table->string('name')->nullable();
             $table->string('uid')->uniqid();
             $table->unsignedTinyInteger('donner_type')->default(1);

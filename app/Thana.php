@@ -5,6 +5,7 @@ namespace App;
 use App\Models\Admin\Pourashava;
 use Illuminate\Database\Eloquent\Model;
 use Znck\Eloquent\Traits\BelongsToThrough;
+use App\Models\User;
 
 class Thana extends Model
 {
@@ -30,5 +31,9 @@ class Thana extends Model
     public function pourashava()
     {
         return $this->hasMany(Pourashava::class);
+    }
+    public function users()
+    {
+        return $this->hasMany(User::class, 'thana_id', 'id');
     }
 }
