@@ -6717,3 +6717,19 @@
 #67 {main}
 >>>>>>> ca3e9b63b5b508db6a1729d2a380ed1fa273ff15
 "} 
+[2024-11-25 09:17:42] local.ERROR: There are no commands defined in the "migration" namespace.
+
+Did you mean this?
+    migrate {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"migration\" namespace.
+
+Did you mean this?
+    migrate at D:\\WWW\\Polivicticare\\vendor\\symfony\\console\\Application.php:650)
+[stacktrace]
+#0 D:\\WWW\\Polivicticare\\vendor\\symfony\\console\\Application.php(701): Symfony\\Component\\Console\\Application->findNamespace('migration')
+#1 D:\\WWW\\Polivicticare\\vendor\\symfony\\console\\Application.php(259): Symfony\\Component\\Console\\Application->find('migration:fresh')
+#2 D:\\WWW\\Polivicticare\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 D:\\WWW\\Polivicticare\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 D:\\WWW\\Polivicticare\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 D:\\WWW\\Polivicticare\\artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#6 {main}
+"} 

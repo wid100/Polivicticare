@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class District extends Model
 {
@@ -21,5 +22,11 @@ class District extends Model
     public function division()
     {
         return $this->belongsTo(Division::class);
+    }
+
+
+    public function users()
+    {
+        return $this->hasMany(User::class, 'district_id', 'id');
     }
 }

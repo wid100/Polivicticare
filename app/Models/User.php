@@ -2,6 +2,13 @@
 
 namespace App\Models;
 
+use App\District;
+use App\Division;
+use App\Thana;
+use App\Union;
+use App\Models\Admin\Pourashava;
+use App\Models\Admin\Upazilla;
+use App\Models\Admin\Ward;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -31,6 +38,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'country_code',
         'gender',
         'password',
+        'division_id',
+        'district_id',
+        'thana_id',
+        'union_id',
+        'pourashava_id',
+        'ward_id',
+        'house',
+
 
         'uid',
 
@@ -47,6 +62,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'reference_name'
 
     ];
+
+
     public function subscriptions()
     {
         return $this->hasMany('App\Models\Subscriptions');
@@ -97,5 +114,42 @@ class User extends Authenticatable implements MustVerifyEmail
     public function organization()
     {
         return $this->belongsTo(Organization::class, 'organization_id', 'id');
+    }
+
+
+
+    public function district()
+    {
+        return $this->belongsTo(District::class, 'district_id', 'id');
+    }
+
+    public function division()
+    {
+        return $this->belongsTo(Division::class, 'division_id', 'id');
+    }
+
+    public function thana()
+    {
+        return $this->belongsTo(Thana::class, 'thana_id', 'id');
+    }
+
+    public function union()
+    {
+        return $this->belongsTo(Union::class, 'union_id', 'id');
+    }
+
+    public function pourashava()
+    {
+        return $this->belongsTo(Pourashava::class, 'pourashava_id', 'id');
+    }
+
+    public function upozilla()
+    {
+        return $this->belongsTo(Upazilla::class, 'upazilla_id', 'id');
+    }
+
+    public function ward()
+    {
+        return $this->belongsTo(Ward::class, 'ward_id', 'id');
     }
 }

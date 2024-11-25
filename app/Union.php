@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Znck\Eloquent\Traits\BelongsToThrough;
+use App\Models\User;
 
 class Union extends Model
 {
@@ -24,5 +25,10 @@ class Union extends Model
     public function division()
     {
         return $this->belongsToThrough(Division::class, [District::class, Thana::class]);
+    }
+
+    public function users()
+    {
+        return $this->hasMany(User::class, 'union_id', 'id');
     }
 }
