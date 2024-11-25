@@ -38,7 +38,6 @@ class ProfileController extends Controller
                 'nid' => 'nullable',
                 'description' => 'nullable',
                 'party_designation' => 'required',
-                'location' => 'required',
                 'category' => 'nullable',
                 'organization' => 'nullable',
                 'bkash_number' => 'required',
@@ -60,7 +59,7 @@ class ProfileController extends Controller
         } elseif ($request->roll == 'donor') {
             $request->validate([
                 'name' => 'nullable|max:255',
-                'nid' => 'nullable',
+                // 'nid' => 'nullable',
                 'party_designation' => 'nullable',
                 'location' => 'nullable',
                 'category' => 'nullable',
@@ -96,7 +95,7 @@ class ProfileController extends Controller
 
         $data = [
             'name' => $request->name,
-            'nid' => $request->nid,
+            // 'nid' => $request->nid,
             'party_designation' => $request->party_designation,
             'location' => $request->location,
             'category_id' => $request->category,

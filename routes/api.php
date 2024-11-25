@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    $user = $request->user()->load(['category', 'organization']);
+    $user = $request->user()->load(['category', 'organization', 'division', 'district', 'thana', 'union', 'pourashava', 'upozilla', 'ward']);
     return response()->json($user);
 });
 
