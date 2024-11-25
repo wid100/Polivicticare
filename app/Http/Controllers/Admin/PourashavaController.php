@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Division;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Pourashava;
 use App\Thana;
@@ -28,8 +29,9 @@ class PourashavaController extends Controller
     public function create()
     {
         $thanas = Thana::all();
-        // dd($thanas);
-        return view('admin.pourashava.create', compact('thanas'));
+        $division = Division::all();
+        // dd($division->districts);
+        return view('admin.pourashava.create', compact('thanas', 'division'));
     }
 
     /**
