@@ -12,6 +12,7 @@ class Thana extends Model
     use BelongsToThrough;
 
     public $timestamps = false;
+    protected $fillable = ['district_id', 'name', 'bn_name'];
 
     public function unions()
     {

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\District;
+use App\Division;
 use App\Http\Controllers\Controller;
 
 use App\Models\Admin\Upazilla;
+use App\Thana;
 use Illuminate\Http\Request;
 
 class UpazillaController extends Controller
@@ -17,7 +19,7 @@ class UpazillaController extends Controller
      */
     public function index()
     {
-        $upazillas = Upazilla::with('district')->get();
+        $upazillas = Thana::with('district')->orderBy('id', 'desc')->get();
         return view('admin.upazilla.index', compact('upazillas'));
     }
 
@@ -29,7 +31,9 @@ class UpazillaController extends Controller
     public function create()
     {
         $districts = District::all();
-        return view('admin.upazilla.create', compact('districts'));
+        $thanas = Thana::all();
+        $division = Division::all();
+        return view('admin.upazilla.create', compact('districts', 'thanas', 'division'));
     }
 
     /**
@@ -41,13 +45,14 @@ class UpazillaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'district_id' => ['required'],
+            'upazilla_name' => ['required', 'string', 'max:255'],
+            'district' => ['required'],
         ]);
 
-        Upazilla::create([
-            'name' => $request->name,
-            'district_id' => $request->district_id,
+        Thana::create([
+            'name' => $request->upazilla_name,
+            'district_id' => $request->district,
+            'bn_name' => $request->upazilla_name,
         ]);
         return redirect()->route('admin.upazilla.index')
             ->with('success', 'Upazilla created successfully.');
@@ -93,9 +98,10 @@ class UpazillaController extends Controller
      * @param  \App\Models\Admin\Upazilla  $upazilla
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Upazilla $upazilla)
+    public function destroy($id)
     {
-        $upazilla->delete();
+        $thana = Thana::find($id);
+        $thana->delete();
         return redirect()->route('admin.upazilla.index')->with('success', 'Upazilla deleted successfully!');
     }
 }
