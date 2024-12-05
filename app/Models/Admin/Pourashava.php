@@ -2,7 +2,7 @@
 
 namespace App\Models\Admin;
 
-use App\Thana;
+use App\District;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
@@ -10,11 +10,11 @@ use App\Models\User;
 class Pourashava extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'thana_id'];
+    protected $fillable = ['name', 'district_id'];
 
-    public function thana()
+    public function district()
     {
-        return $this->belongsTo(Thana::class);
+        return $this->belongsTo(District::class);
     }
 
     public function users()

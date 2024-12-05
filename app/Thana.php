@@ -14,10 +14,7 @@ class Thana extends Model
     public $timestamps = false;
     protected $fillable = ['district_id', 'name', 'bn_name'];
 
-    public function unions()
-    {
-        return $this->hasMany(Union::class);
-    }
+
 
     public function district()
     {
@@ -29,10 +26,10 @@ class Thana extends Model
         return $this->belongsToThrough(Division::class, District::class);
     }
     //relation pourashava
-    public function pourashava()
-    {
-        return $this->hasMany(Pourashava::class);
-    }
+    // public function pourashava()
+    // {
+    //     return $this->hasMany(Pourashava::class);
+    // }
     public function users()
     {
         return $this->hasMany(User::class, 'thana_id', 'id');

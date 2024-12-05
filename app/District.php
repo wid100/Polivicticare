@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
+use App\Models\Admin\Pourashava;
+
 class District extends Model
 {
     public $timestamps = false;
@@ -14,16 +16,19 @@ class District extends Model
         return $this->hasMany(Thana::class);
     }
 
+
     public function unions()
     {
-        return $this->hasManyThrough(Union::class, Thana::class);
+        return $this->hasMany(Union::class);
     }
-
     public function division()
     {
         return $this->belongsTo(Division::class);
     }
-
+    public function pourashava()
+    {
+        return $this->hasMany(Pourashava::class);
+    }
 
     public function users()
     {

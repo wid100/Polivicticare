@@ -17,7 +17,7 @@ class PourashavaController extends Controller
      */
     public function index()
     {
-        $pourashavas = Pourashava::with('thana')->get();
+        $pourashavas = Pourashava::with('district')->get();
         return view('admin.pourashava.index', compact('pourashavas'));
     }
 
@@ -44,12 +44,12 @@ class PourashavaController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'thana' => 'required',
+            'district' => 'required',
         ]);
 
         Pourashava::create([
             'name' => $request->name,
-            'thana_id' => $request->thana,
+            'district_id' => $request->district,
         ]);
         return redirect()->route('admin.pourashava.index')->with('success', 'Pourashava created successfully.');
     }

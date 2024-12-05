@@ -69,6 +69,13 @@
             </li>
 
             <li class="nav-item">
+                <a href="{{ route('admin.union.index') }}" class="nav-link">
+                    <i class="link-icon" data-feather="box"></i>
+                    <span class="link-title">Unions</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a href="{{ route('admin.ward.index') }}" class="nav-link">
                     <i class="link-icon" data-feather="box"></i>
                     <span class="link-title">Ward</span>

@@ -16,10 +16,10 @@ class CreatePourashavasTable extends Migration
         Schema::create('pourashavas', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedInteger('thana_id');
+            $table->unsignedInteger('district_id');
             $table->timestamps();
 
-            $table->foreign('thana_id')->references('id')->on('thanas')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('district_id')->references('id')->on('districts')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
