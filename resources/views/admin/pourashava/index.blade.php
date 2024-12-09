@@ -35,7 +35,8 @@
                                             <td>{{ $item->id }}</td>
 
                                             <td>{{ $item->name }}</td>
-                                            <td>{{ $item->district->name ?? '' }}</td>
+                                            <td>{{ $item->thana->name ?? '' }}</td>
+
 
                                             <td>
                                                 {{-- <a href="{{ route('admin.categorys.edit', $item->id) }}"

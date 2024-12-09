@@ -35,20 +35,21 @@ class CreateBdgeocodeTables extends Migration
             $table->foreign('district_id')->references('id')->on('districts')->onUpdate('cascade')->onDelete('cascade');
         });
 
-        // Schema::create('unions', function (Blueprint $table) {
-        //     $table->increments('id');
-        //     $table->unsignedInteger('district_id');
-        //     $table->string('name');
+        Schema::create('unions', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('thana_id');
+            $table->string('name');
+            $table->string('bn_name');
 
-        //     $table->foreign('district_id')->references('id')->on('districts')->onUpdate('cascade')->onDelete('cascade');
-        // });
+            $table->foreign('thana_id')->references('id')->on('thanas')->onUpdate('cascade')->onDelete('cascade');
+        });
 
         // DB::commit();
     }
 
     public function down()
     {
-        // Schema::dropIfExists('unions');
+        Schema::dropIfExists('unions');
         Schema::dropIfExists('thanas');
         Schema::dropIfExists('districts');
         Schema::dropIfExists('divisions');

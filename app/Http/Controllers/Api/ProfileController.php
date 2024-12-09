@@ -44,9 +44,9 @@ class ProfileController extends Controller
                 'division_id' => 'required',
                 'district_id' => 'required',
                 'thana_id' => 'required',
-                'union_id' => 'required',
-                'pourashava_id' => 'required',
-                'ward_id' => 'required',
+                'union_id' => 'nullable',
+                'pourashava_id' => 'nullable',
+                'ward_id' => 'nullable',
                 'house' => 'required',
                 'reference_name' => 'required',
                 'location' => 'required',
@@ -130,7 +130,7 @@ class ProfileController extends Controller
             ]);
         } elseif ($request->roll === 'donor') {
             $data = array_merge($data, [
-                'role_id' => 1,
+                'role_id' => 3,
                 'nid' => $request->nid,
                 'party_designation' => $request->party_designation,
                 'location' => $request->location,

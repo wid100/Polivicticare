@@ -25,7 +25,6 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Phone</th>
-                                        {{-- <th>Category</th> --}}
                                         <th>NID</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -45,7 +44,7 @@
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->phone }}</td>
-                                            {{-- <td>{{ $user->category->name }}</td> --}}
+                                          
                                             <td>
                                                 {{ $user->nid }}
                                             </td>

@@ -9,18 +9,18 @@ use App\Models\User;
 class Union extends Model
 {
     use BelongsToThrough;
-    protected $fillable = ['district_id', 'name'];
-
-
 
     public $timestamps = false;
 
-    public function district()
+    public function thana()
     {
-        return $this->belongsTo(District::class);
+        return $this->belongsTo(Thana::class);
     }
 
-
+    public function district()
+    {
+        return $this->belongsToThrough(District::class, Thana::class);
+    }
 
     public function division()
     {

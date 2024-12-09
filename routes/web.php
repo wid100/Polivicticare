@@ -12,7 +12,6 @@ use App\Http\Controllers\Admin\WardController;
 use App\Http\Controllers\Admin\UpazillaController;
 use App\Http\Controllers\Auth\GoogleController;
 
-use App\Http\Controllers\Admin\UnionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -98,7 +97,6 @@ Route::namespace('App\Http\Controllers')->group(
             Route::resource('/pourashava', 'PourashavaController');
             Route::resource('/ward', 'WardController');
             Route::resource('/upazilla', 'UpazillaController');
-            Route::resource('/union', 'UnionController');
 
             Route::get('/login/google', [GoogleController::class, 'redirectToGoogle']);
             Route::get('/login/google/callback', [GoogleController::class, 'handleGoogleCallback']);
