@@ -10,6 +10,16 @@ use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
 {
+    public function getUser()
+    {
+        $victimCount = User::where('role_id', 2)->count(); // Role ID for Victim
+        $donorCount = User::where('role_id', 3)->count(); // Role ID for Donor
+
+        return response()->json([
+            'victimCount' => $victimCount,
+            'donorCount' => $donorCount,
+        ]);
+    }
 
     public function update(Request $request, $id)
     {
