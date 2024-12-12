@@ -25,6 +25,12 @@
                     <span class="link-title">Users</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('admin.doner.index') }}" class="nav-link">
+                    <i class="link-icon" data-feather="box"></i>
+                    <span class="link-title">Doners</span>
+                </a>
+            </li>
 
             <li class="nav-item">
                 <a href="{{ route('admin.categorys.index') }}" class="nav-link">

@@ -88,6 +88,7 @@ Route::namespace('App\Http\Controllers')->group(
             Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
             Route::resource('/users', 'UserController');
+            Route::get('/all-doner', 'UserController@DonerIndex')->name('doner.index');
             Route::get('/block', 'UserController@block')->name('block');
 
             Route::resource('/categorys', 'CategoryController');
