@@ -26,6 +26,15 @@ class UserController extends Controller
 
 
 
+    public function DonerIndex()
+    {
+        $users = User::where('role_id', 3)->with('category')->get();
+        return view('admin.user.doner-index', compact('users'));
+    }
+
+
+
+
     public function block()
     {
         $users = User::where('role_id', 4)->get();
