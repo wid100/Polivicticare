@@ -33,14 +33,13 @@ class ProfileController extends Controller
             'roll' => 'required|in:victim,donor',
         ]);
         if ($request->roll == 'victim') {
-            $request->validate([
+            $rules = [
                 'name' => 'required|max:255',
                 'nid' => 'nullable',
                 'description' => 'nullable',
                 'party_designation' => 'required',
                 'category' => 'nullable',
                 'organization' => 'nullable',
-                'bkash_number' => 'required',
                 'division_id' => 'required',
                 'district_id' => 'required',
                 'thana_id' => 'required',
@@ -55,8 +54,42 @@ class ProfileController extends Controller
                 'reference_organization_id' => 'nullable',
                 'reference_district' => 'nullable',
                 'reference_location' => 'nullable',
+            ];
+            if (!empty($request->mobile_wallet_name)) {
+                $rules['mobile_wallet_name'] = 'required|string|max:255';
+                $rules['mobile_wallet_number'] = 'required|string|max:255';
+            } else {
+                $rules['bank_name'] = 'required|string|max:255';
+                $rules['bank_holder_name'] = 'required|string|max:255';
+                $rules['bank_branch_name'] = 'required|string|max:255';
+                $rules['bank_account_number'] = 'required|string|max:255';
+            }
 
-            ]);
+            // $request->validate([
+            //     'name' => 'required|max:255',
+            //     'nid' => 'nullable',
+            //     'description' => 'nullable',
+            //     'party_designation' => 'required',
+            //     'category' => 'nullable',
+            //     'organization' => 'nullable',
+            //     'bkash_number' => 'required',
+            //     'division_id' => 'required',
+            //     'district_id' => 'required',
+            //     'thana_id' => 'required',
+            //     'union_id' => 'nullable',
+            //     'pourashava_id' => 'nullable',
+            //     'ward_id' => 'nullable',
+            //     'house' => 'required',
+            //     'reference_name' => 'required',
+            //     'location' => 'required',
+            //     'reference_email' => 'required',
+            //     'reference_phone' => 'required',
+            //     'reference_organization_id' => 'nullable',
+            //     'reference_district' => 'nullable',
+            //     'reference_location' => 'nullable',
+
+            // ]);
+            $request->validate($rules);
         } elseif ($request->roll == 'donor') {
             $request->validate([
                 'name' => 'nullable|max:255',
@@ -67,32 +100,6 @@ class ProfileController extends Controller
                 'organization' => 'nullable',
             ]);
         }
-
-        // if ($request->roll == 'victim') {
-        //     $data = [
-        //         'name' => $request->name,
-        //         'role_id' => 2,
-        //         'nid' => $request->nid,
-        //         'problem_description' => $request->description,
-        //         'reference' => $request->reference,
-        //         'party_designation' => $request->party_designation,
-        //         'location' => $request->location,
-        //         'category' => $request->category,
-        //         'organization' => $request->organization,
-        //         'bank_info' => $request->bkash_number,
-        //     ];
-        // } elseif ($request->roll == 'donor') {
-        //     $data = [
-        //         'name' => $request->name,
-        //         'role_id' => 1,
-        //         'nid' => $request->nid,
-        //         'party_designation' => $request->party_designation,
-        //         'location' => $request->location,
-        //         'category' => $request->category,
-        //         'organization' => $request->organization,
-        //         'status' => $request->status, // 1 = with name
-        //     ];
-        // }
 
         $data = [
             'name' => $request->name,
@@ -125,8 +132,16 @@ class ProfileController extends Controller
                 'reference_organization_id' => $request->reference_organization_id,
                 'reference_district' => $request->reference_district,
                 'reference_location' => $request->reference_location,
-
-
+                'other_category' => $request->other_category,
+                'other_organization' => $request->other_organization,
+                //mobile banking information
+                'mobile_wallet_name' => $request->mobile_wallet_name,
+                'mobile_wallet_number' => $request->mobile_wallet_number,
+                // bank information
+                'bank_name' => $request->bank_name,
+                'bank_holder_name' => $request->bank_holder_name,
+                'bank_branch_name' => $request->bank_branch_name,
+                'bank_account_number' => $request->bank_account_number,
             ]);
         } elseif ($request->roll === 'donor') {
             $data = array_merge($data, [
