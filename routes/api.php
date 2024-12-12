@@ -40,6 +40,7 @@ Route::post('/users/{id}', [UserController::class, 'update']);
 Route::post('/create-profile/{id}', [ProfileController::class, 'create']);
 
 
+Route::get('/get-user', [UserController::class, 'getUser']);
 Route::get('/category', [CategoryController::class, 'index']);
 Route::get('/organization', [OrganizationController::class, 'index']);
 
