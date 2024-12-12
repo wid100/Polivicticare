@@ -98,6 +98,8 @@ class ProfileController extends Controller
                 'location' => 'nullable',
                 'category' => 'nullable',
                 'organization' => 'nullable',
+                'other_category' => 'nullable|string|max:255',
+                'other_organization' => 'nullable|string|max:255',
             ]);
         }
 
@@ -149,6 +151,8 @@ class ProfileController extends Controller
                 'nid' => $request->nid,
                 'party_designation' => $request->party_designation,
                 'location' => $request->location,
+                'other_category' => $request->other_category ?? null,
+                'other_organization' => $request->other_organization ?? null,
             ]);
         }
 
