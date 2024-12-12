@@ -34,79 +34,83 @@
                                 </div>
                             </div>
 
-                            <div class="d-flex gap-2">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="nid" class="form-label">Nid Number</label>
-                                        <input disabled type="text" class="form-control @error('nid') is-invalid @enderror" id="nid" name="nid"
-                                            autocomplete="off" placeholder="Nid Number" value="{{ old('nid', $data->nid) }}">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
+                                            <label for="nid" class="form-label">Nid Number</label>
+                                            <input disabled type="text" class="form-control @error('nid') is-invalid @enderror" id="nid" name="nid"
+                                                autocomplete="off" placeholder="Nid Number" value="{{ old('nid', $data->nid) }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
+                                            <h5 for="payment_type" class="form-label">Payment type</h5>
+                                            <select disabled name="payment_type" class="form-select @error('payment_type') is-invalid @enderror" aria-label="Default select example" style="background-color:#121e3b">
+                                                <option value="" {{ old('payment_type', isset($data->payment_type) ? $data->payment_type : '') == '' ? 'selected' : '' }}>Select method</option>
+                                                <option value="Bank" {{ old('payment_type', isset($data->payment_type) ? $data->payment_type : '') == 'Bank' ? 'selected' : '' }}>Bank</option>
+                                                <option value="bKash" {{ old('payment_type', isset($data->payment_type) ? $data->payment_type : '') == 'bKash' ? 'selected' : '' }}>bKash</option>
+                                                <option value="Nagad" {{ old('payment_type', isset($data->payment_type) ? $data->payment_type : '') == 'Nagad' ? 'selected' : '' }}>Nagad</option>
+                                                <option value="Rocket" {{ old('payment_type', isset($data->payment_type) ? $data->payment_type : '') == 'Rocket' ? 'selected' : '' }}>Rocket</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
+                                            <label for="name" class="form-label">Amount</label>
+                                            <input disabled type="number" class="form-control @error('amount') is-invalid @enderror" id="name" name="amount"
+                                                autocomplete="off" placeholder="Amount" required value="{{ old('amount', $data->amount) }}">
+                                        </div>
+                                        @error('amount')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <h5 for="name" class="form-label">Nid Photos</h5>
-                                        @php
-                                            $nidImg = json_decode($data->nid_img);
-                                        @endphp
-                                        <div>
-                                        @if ($nidImg && count($nidImg) > 0)
-                                            @foreach ($nidImg as $image)
-                                                <img class="img-fluid me-2" src="{{ asset('storage/' . $image) }}" alt="NID Image" style="width: 100px; height: 100px;">
-                                            @endforeach
-                                        @else
-                                            <p>No image available</p>
-                                        @endif
+
+                                <div class="col-6">
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
+                                            <h5 for="name" class="form-label">Nid Photos</h5>
+                                            @php
+                                                $nidImg = json_decode($data->nid_img);
+                                            @endphp
+                                            <div>
+                                            @if ($nidImg && count($nidImg) > 0)
+                                                @foreach ($nidImg as $image)
+                                                    <img class="img-fluid me-2" src="{{ asset('storage/' . $image) }}" alt="NID Image" style="width: 100px; height: 100px;">
+                                                @endforeach
+                                            @else
+                                                <p>No image available</p>
+                                            @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
+                                            <h5 for="name" class="form-label">Recept Photos</h5>
+                                            @php
+                                                $receptImg = json_decode($data->recept_img);
+                                            @endphp
+
+                                            @if ($receptImg && count($receptImg) > 0)
+                                                @foreach ($receptImg as $image)
+                                                    <img class="img-fluid me-2" src="{{ asset('storage/' . $image) }}" alt="Recept Image" style="width: 100px; height: 100px;">
+                                                @endforeach
+                                            @else
+                                                <p>No image available</p>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="d-flex gap-2">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <h5 for="payment_type" class="form-label">Payment type</h5>
-                                    <select disabled name="payment_type" class="form-select @error('payment_type') is-invalid @enderror" aria-label="Default select example" style="background-color:#121e3b">
-                                        <option value="" {{ old('payment_type', isset($data->payment_type) ? $data->payment_type : '') == '' ? 'selected' : '' }}>Select method</option>
-                                        <option value="Bank" {{ old('payment_type', isset($data->payment_type) ? $data->payment_type : '') == 'Bank' ? 'selected' : '' }}>Bank</option>
-                                        <option value="bKash" {{ old('payment_type', isset($data->payment_type) ? $data->payment_type : '') == 'bKash' ? 'selected' : '' }}>bKash</option>
-                                        <option value="Nagad" {{ old('payment_type', isset($data->payment_type) ? $data->payment_type : '') == 'Nagad' ? 'selected' : '' }}>Nagad</option>
-                                        <option value="Rocket" {{ old('payment_type', isset($data->payment_type) ? $data->payment_type : '') == 'Rocket' ? 'selected' : '' }}>Rocket</option>
-                                    </select>
 
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label">Recept Photos</label>
-                                        @php
-                                            $receptImg = json_decode($data->recept_img);
-                                        @endphp
-
-                                        @if ($receptImg && count($receptImg) > 0)
-                                            @foreach ($receptImg as $image)
-                                                <img class="img-fluid me-2" src="{{ asset('storage/' . $image) }}" alt="Recept Image" style="width: 100px; height: 100px;">
-                                            @endforeach
-                                        @else
-                                            <p>No image available</p>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex gap-2">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label">Amount</label>
-                                        <input disabled type="number" class="form-control @error('amount') is-invalid @enderror" id="name" name="amount"
-                                            autocomplete="off" placeholder="Amount" required value="{{ old('amount', $data->amount) }}">
-                                    </div>
-                                    @error('amount')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-
-                            </div>
                             <a type="button" class="btn btn-primary me-2" href="{{ route('admin.distribute.index') }}">Back</a>
                             <a href="{{ route('admin.distribute.edit', $data->id) }}"
                                         class="btn btn-primary btn-icon">
