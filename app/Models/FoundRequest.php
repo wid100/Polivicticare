@@ -18,6 +18,7 @@ class FoundRequest extends Model
         'location',
         'image',
         'request_amount',
+        'nid_image',
         'status',
     ];
 

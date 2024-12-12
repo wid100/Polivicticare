@@ -27,6 +27,8 @@ class FoundRequestController extends Controller
             'location' => ['nullable', 'string', 'max:255'],
             'image' => ['nullable', 'array'],
             'image.*' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'nid_image' => ['nullable', 'array'],
+            'nid_image.*' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
             'request_amount' => ['nullable', 'numeric'],
         ]);
 
@@ -35,6 +37,13 @@ class FoundRequestController extends Controller
         if ($request->hasFile('image')) {
             foreach ($request->file('image') as $file) {
                 $images[] = $file->store('found_requests', 'public');
+            }
+        }
+        // Process and upload nid images if provided
+        $nidImages = [];
+        if ($request->hasFile('nid_image')) {
+            foreach ($request->file('nid_image') as $file) {
+                $nidImages[] = $file->store('nid_images', 'public'); // Store in a separate directory
             }
         }
 
@@ -47,6 +56,7 @@ class FoundRequestController extends Controller
             'description' => $request->description,
             'location' => $request->location,
             'image' => $images ? json_encode($images) : null,
+            'nid_image' => $nidImages ? json_encode($nidImages) : null,
             'request_amount' => $request->request_amount,
             'status' => 0,
         ]);
