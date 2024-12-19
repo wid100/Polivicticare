@@ -64,7 +64,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'reference_organization_id',
         'reference_district',
         'reference_location',
-
+        'social_link',
         'other_category',
         'other_organization',
         'mobile_wallet_name',

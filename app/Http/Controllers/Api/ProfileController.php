@@ -100,6 +100,7 @@ class ProfileController extends Controller
                 'organization' => 'nullable',
                 'other_category' => 'nullable|string|max:255',
                 'other_organization' => 'nullable|string|max:255',
+                'social_link' => 'nullable'
             ]);
         }
 
@@ -110,10 +111,11 @@ class ProfileController extends Controller
             'location' => $request->location,
             'category_id' => $request->category,
             'organization_id' => $request->organization,
+            'social_link' => $request->social_link,
         ];
 
         // Role-specific fields
-        if ($request->roll === 'victim') {
+        if ($request->roll == 'victim') {
             $data = array_merge($data, [
                 'role_id' => 2,
                 'problem_description' => $request->description,
@@ -153,6 +155,7 @@ class ProfileController extends Controller
                 'location' => $request->location,
                 'other_category' => $request->other_category ?? null,
                 'other_organization' => $request->other_organization ?? null,
+                'social_link' => $request->social_link,
             ]);
         }
 

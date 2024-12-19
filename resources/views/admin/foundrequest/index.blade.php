@@ -6,9 +6,9 @@
         <nav class="page-breadcrumb d-flex align-items-center justify-content-between">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Found Request</li>
+                <li class="breadcrumb-item active" aria-current="page">Fund Request</li>
             </ol>
-            <a href="{{ route('admin.foundrequest.create') }}" class="btn btn-primary">Create Found Request</a>
+            <a href="{{ route('admin.foundrequest.create') }}" class="btn btn-primary">Create Fund Request</a>
         </nav>
 
         <div class="row">

@@ -4,8 +4,8 @@
     <div class="page-content">
         <nav class="page-breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Found Category</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Edit Found Category</li>
+                <li class="breadcrumb-item"><a href="#">Fund Category</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Fund Category</li>
             </ol>
         </nav>
 
@@ -14,7 +14,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h6 class="card-title">Edit Found Category</h6>
+                        <h6 class="card-title">Edit Fund Category</h6>
                         <form action="{{ route('admin.foundcategory.update', $foundcategory->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf

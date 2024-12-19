@@ -49,14 +49,14 @@
             <li class="nav-item">
                 <a href="{{ route('admin.foundcategory.index') }}" class="nav-link">
                     <i class="link-icon" data-feather="box"></i>
-                    <span class="link-title">Found Category</span>
+                    <span class="link-title">Fund Category</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a href="{{ route('admin.foundrequest.index') }}" class="nav-link">
                     <i class="link-icon" data-feather="box"></i>
-                    <span class="link-title">All Found Request</span>
+                    <span class="link-title">All Fund Request</span>
                 </a>
             </li>
 

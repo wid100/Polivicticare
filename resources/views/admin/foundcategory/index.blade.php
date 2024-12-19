@@ -6,10 +6,10 @@
         <nav class="page-breadcrumb d-flex align-center justify-content-between">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Found Category List</li>
+                <li class="breadcrumb-item active" aria-current="page">Fund Category List</li>
             </ol>
             <a href="{{ route('admin.foundcategory.create') }}" class="btn btn-primary">Create
-                Found Category </a>
+                Fund Category </a>
         </nav>
 
         <div class="row">
