@@ -34,6 +34,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     $user = $request->user()->load(['category', 'organization', 'division', 'district', 'thana', 'union', 'pourashava', 'upozilla', 'ward']);
     return response()->json($user);
 });
+Route::delete('/user/delete/{id}', [UserController::class, 'destroy']);
+
 
 
 Route::post('/users/{id}', [UserController::class, 'update']);

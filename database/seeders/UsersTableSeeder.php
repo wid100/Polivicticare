@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Super Admin',
             'uid' => '897234',
             'phone' => '01792892198',
-            'email' => 'helal@admin.com',
+            'email' => 'dev@admin.com',
             'password' => bcrypt('11111111'),
         ]);
         DB::table('users')->insert([
@@ -27,7 +27,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'victim',
             'uid' => '635788',
             'phone' => '01792892198',
-            'email' => 'helal@victim.com',
+            'email' => 'dev@victim.com',
             'password' => bcrypt('11111111'),
         ]);
         DB::table('users')->insert([
@@ -35,7 +35,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Doner',
             'uid' => '067575',
             'phone' => '01792892198',
-            'email' => 'helal@doner.com',
+            'email' => 'dev@doner.com',
             'password' => bcrypt('11111111'),
         ]);
         DB::table('users')->insert([
@@ -43,7 +43,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Block User',
             'uid' => '423789',
             'phone' => '01792892198',
-            'email' => 'helal@block.com',
+            'email' => 'dev@block.com',
             'password' => bcrypt('11111111'),
         ]);
     }

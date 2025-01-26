@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -73,4 +74,22 @@ class UserController extends Controller
             return response()->json(['status' => 500, 'error' => $e->getMessage()]);
         }
     }
+
+
+    public function destroy($id)
+{
+    $user = User::find($id);
+
+    if (!$user) {
+        return response()->json(['message' => 'User not found.'], 404);
+    }
+
+    try {
+        $user->delete();
+        return response()->json(['message' => 'User account deleted successfully.'], 200);
+    } catch (\Exception $e) {
+        return response()->json(['message' => 'Failed to delete account.'], 500);
+    }
+}
+
 }
