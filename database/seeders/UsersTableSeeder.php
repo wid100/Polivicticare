@@ -20,6 +20,7 @@ class UsersTableSeeder extends Seeder
             'uid' => '897234',
             'phone' => '01792892198',
             'email' => 'dev@admin.com',
+            'email_verified_at' => now(),
             'password' => bcrypt('11111111'),
         ]);
         DB::table('users')->insert([
@@ -28,6 +29,7 @@ class UsersTableSeeder extends Seeder
             'uid' => '635788',
             'phone' => '01792892198',
             'email' => 'dev@victim.com',
+            'email_verified_at' => now(),
             'password' => bcrypt('11111111'),
         ]);
         DB::table('users')->insert([
@@ -36,6 +38,7 @@ class UsersTableSeeder extends Seeder
             'uid' => '067575',
             'phone' => '01792892198',
             'email' => 'dev@doner.com',
+            'email_verified_at' => now(),
             'password' => bcrypt('11111111'),
         ]);
         DB::table('users')->insert([
@@ -44,7 +47,20 @@ class UsersTableSeeder extends Seeder
             'uid' => '423789',
             'phone' => '01792892198',
             'email' => 'dev@block.com',
+            'email_verified_at' => now(),
             'password' => bcrypt('11111111'),
         ]);
+
+
+        DB::table('users')->insert([
+            'role_id' => '2',
+            'name' => 'Demo User',
+            'uid' => '423789',
+            'phone' => '01792892198',
+            'email' => 'demo@gmail.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('demo!123'),
+        ]);
+
     }
 }
