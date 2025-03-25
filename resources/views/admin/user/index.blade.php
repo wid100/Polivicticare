@@ -52,7 +52,15 @@
                                             </td>
 
                                             <td>
-                                                @if ($user->email_verified_at)
+                                                {{-- @if ($user->email_verified_at)
+                                                    <span class="badge bg-success">Verified</span>
+                                                @else
+                                                    <span class="badge bg-danger">Unvarified</span>
+                                                @endif --}}
+
+                                                @if($user->role_id == 4)
+                                                    <span class="badge bg-danger">Block</span>
+                                                @elseif($user->email_verified_at)
                                                     <span class="badge bg-success">Verified</span>
                                                 @else
                                                     <span class="badge bg-danger">Unvarified</span>

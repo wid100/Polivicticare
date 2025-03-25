@@ -31,12 +31,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'image',
-        'city',
-        'country',
         'phone',
-        'address',
-        'country_code',
-        'gender',
         'password',
         'division_id',
         'district_id',
@@ -73,6 +68,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'bank_holder_name',
         'bank_branch_name',
         'bank_account_number',
+        'email_verified_at'
 
     ];
 

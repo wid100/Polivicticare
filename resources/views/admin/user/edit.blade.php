@@ -35,39 +35,56 @@
                                             value="{{ $user->email }}" placeholder="Email">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="gender" class="form-label">Gender</label>
-                                        <input type="text" class="form-control" id="gender" name="gender"
-                                            value="{{ $user->gender }}" placeholder="Gender">
-                                    </div>
-                                </div>
 
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="country" class="form-label">Country</label>
-                                        <input type="text" class="form-control" id="country" name="country"
-                                            value="{{ $user->country }}" placeholder="Country">
+                                        <label for="name" class="form-label">Division<span
+                                                class="text-danger">*</span></label>
+                                        {{-- select  --}}
+                                        <select id="division" name="division" class="form-select" aria-label="Default select example">
+                                            <option selected>Open this select menu</option>
+                                            @isset($division)
+                                                @foreach ($division as $item)
+                                                    <option value="{{ $item->id }}" {{ $user->division_id == $item->id ? 'selected' : '' }}>{{ $item->name ?? '' }}</option>
+                                                @endforeach
+                                            @endisset
+                                        </select>
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="city" class="form-label">City</label>
-                                        <input type="text" class="form-control" id="city" name="city"
-                                            value="{{ $user->city }}" placeholder="City">
+                                        <label for="name" class="form-label">Districts<span
+                                                class="text-danger">*</span></label>
+                                        {{-- select  --}}
+                                        <select name="district" id="district" class="form-select">
+                                            <option selected disabled>Select a district</option>
+                                        </select>
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="address" class="form-label">Address</label>
-                                        <input type="text" class="form-control" id="address" name="address"
-                                            value="{{ $user->address }}" placeholder="Address">
+                                        <label for="name" class="form-label">Thana Name <span
+                                                class="text-danger">*</span></label>
+                                        {{-- select  --}}
+                                        <select id="thanas" name="thana" class="form-select" aria-label="Default select example">
+                                            <option selected>Open this select menu</option>
+                                            {{-- @isset($thanas)
+                                                @foreach ($thanas as $item)
+                                                    <option value="{{ $item->id }}">{{ $item->name ?? '' }}</option>
+                                                @endforeach
+                                            @endisset --}}
+                                        </select>
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
+
+
+
+
+
+                                <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">Phone</label>
                                         <input type="text" class="form-control" id="phone" name="phone"
@@ -108,4 +125,85 @@
         </div>
 
     </div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        const host = window.location.origin;
+        let divisionId = $('#division').val();
+        let districtId = "{{ $user->district_id ?? '' }}"; // Set from backend
+        let thanaId = "{{ $user->thana_id ?? '' }}"; // Set from backend
+
+        if (divisionId) {
+            fetchDistricts(divisionId, districtId);
+        }
+
+        $('#division').on('change', function () {
+            let divisionId = $(this).val();
+            fetchDistricts(divisionId);
+        });
+
+        $('#district').on('change', function () {
+            let districtId = $(this).val();
+            fetchThanas(districtId);
+        });
+
+        function fetchDistricts(divisionId, preselectedDistrict = null) {
+            $('#district').html('<option selected disabled>Loading...</option>');
+
+            $.ajax({
+                url: `${host}/api/district/${divisionId}`,
+                type: 'GET',
+                headers: { 'Authorization': 'Bearer YOUR_API_TOKEN' },
+                success: function (response) {
+                    let districtOptions = '<option selected disabled>Select a district</option>';
+                    response.data.forEach(function (district) {
+                        let selected = (district.id == preselectedDistrict) ? 'selected' : '';
+                        districtOptions += `<option value="${district.id}" ${selected}>${district.name}</option>`;
+                    });
+
+                    $('#district').html(districtOptions);
+
+                    if (preselectedDistrict) {
+                        $('#district').val(preselectedDistrict).trigger('change');
+                    }
+                },
+                error: function (xhr) {
+                    alert('Failed to fetch districts.');
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+
+        function fetchThanas(districtId) {
+            $('#thanas').html('<option selected disabled>Loading...</option>');
+
+            $.ajax({
+                url: `${host}/api/thanas/${districtId}`,
+                type: 'GET',
+                headers: { 'Authorization': 'Bearer YOUR_API_TOKEN' },
+                success: function (response) {
+                    let thanaOptions = '<option selected disabled>Select a thana</option>';
+                    response.data.forEach(function (thana) {
+                        let selected = (thana.id == thanaId) ? 'selected' : '';
+                        thanaOptions += `<option value="${thana.id}" ${selected}>${thana.name}</option>`;
+                    });
+
+                    $('#thanas').html(thanaOptions);
+                    $('#thanas').val(thanaId); // Set thana if preselected
+                },
+                error: function (xhr) {
+                    alert('Failed to fetch thanas.');
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+    });
+</script>
+
+
+
 @endsection

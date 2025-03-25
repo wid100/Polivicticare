@@ -20,6 +20,7 @@
     <!-- End fonts -->
 
     @include('layouts.backend.style')
+    @yield('page-css')
 </head>
 
 <body>
