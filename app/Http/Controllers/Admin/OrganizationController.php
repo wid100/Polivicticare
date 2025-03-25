@@ -50,7 +50,7 @@ class OrganizationController extends Controller
         $organization = Organization::findOrFail($id);
         $organization->update([
             'name' => $request->name,
-            'status' => $request->status === 'on' ? 1 : 0,
+            'status' => $request->status ? 1 : 0,
         ]);
 
         return redirect()->route('admin.organization.index')->with('success', 'Organization updated successfully!');

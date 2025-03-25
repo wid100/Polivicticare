@@ -82,7 +82,9 @@
                                             <div>
                                             @if ($nidImg && count($nidImg) > 0)
                                                 @foreach ($nidImg as $image)
-                                                    <img class="img-fluid me-2" src="{{ asset('storage/' . $image) }}" alt="NID Image" style="width: 100px; height: 100px;">
+                                                   <a href="{{ asset('storage/' . $image) }}"  target="_blank" >
+                                                        <img class="img-fluid me-2 img-zoom" src="{{ asset('storage/' . $image) }}" alt="NID Image" style="width: 100px; height: 100px;">
+                                                   </a>
                                                 @endforeach
                                             @else
                                                 <p>No image available</p>
@@ -100,7 +102,9 @@
 
                                             @if ($receptImg && count($receptImg) > 0)
                                                 @foreach ($receptImg as $image)
-                                                    <img class="img-fluid me-2" src="{{ asset('storage/' . $image) }}" alt="Recept Image" style="width: 100px; height: 100px;">
+                                                    <a href="{{ asset('storage/' . $image) }}" target="_blank" >
+                                                        <img class="img-fluid me-2" src="{{ asset('storage/' . $image) }}" alt="Recept Image" style="width: 100px; height: 100px;">
+                                                    </a>
                                                 @endforeach
                                             @else
                                                 <p>No image available</p>

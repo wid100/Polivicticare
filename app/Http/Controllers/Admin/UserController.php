@@ -10,6 +10,8 @@ use Dotenv\Exception\ValidationException;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
+use App\Division;
+use App\Thana;
 
 class UserController extends Controller
 {
@@ -19,7 +21,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::where('role_id', 2)->with('category')->get();
+        $users = User::where('role_id', 2)->orWhere('role_id', 4)->with('category')->get();
         return view('admin.user.index', compact('users'));
     }
 
@@ -46,8 +48,11 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
+        $thanas = Thana::all();
+        $division = Division::all();
+        // dd($user);
 
-        return view('admin.user.edit', compact('user'));
+        return view('admin.user.edit', compact('user', 'thanas', 'division'));
     }
 
 
@@ -56,29 +61,31 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
+        // dd($request->all());
 
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $id,
-            'gender' => 'nullable',
-            'country' => 'nullable',
-            'city' => 'nullable',
-            'address' => 'nullable',
             'phone' => 'nullable',
-            'country_code' => 'nullable',
 
         ]);
 
         $data = [
             'name' => $request->name,
             'email' => $request->email,
-            'gender' => $request->gender,
-            'country' => $request->country,
-            'city' => $request->city,
-            'address' => $request->address,
             'phone' => $request->phone,
-            'country_code' => $request->country_code,
+            'division_id' => $request->division,
+            'district_id' => $request->district,
+            'thana_id' => $request->thana,
+            'role_id' => $request->role_id == 'on' ? 4 : 2,
         ];
+
+        if ($request->email_verified_at) {
+            $data['email_verified_at'] = now();
+        }
+
+        // dd($data);
+
 
         $image = $request->file('image');
         if ($image) {
